@@ -3,9 +3,9 @@ AWS-Projects
 
 Project 1: EBS-Volume Cleanup
 
-Removing EBS Volume , Which are not associated with any instance
+Removing EBS Volume, Which is not associated with any instance
 
-1.  By using Lambda function and boto3 SDK with apporiate IAM role
+1.  By using Lambda function and boto3 SDK with appropriate IAM role
 
 Step 1: Write Lambda Function (Python)
 
@@ -13,12 +13,12 @@ Create a new Python file, e.g., cleanup_function.py.
 
 Write the Lambda function code.
 
-This function uses the Boto3 library to interact with AWS services. It lists all volumes, checks if they are attached to any instance, and deletes the ones that are not.Step 2: 
+This function uses the Boto3 library to interact with AWS services. It lists all volumes, checks if they are attached to any instance, and deletes the ones that are not.
 
 
 
 
-2.Create an IAM Role for Lambd
+2.Create an IAM Role for Lambda
 
 Go to the AWS Management Console and navigate to the IAM service.
 
