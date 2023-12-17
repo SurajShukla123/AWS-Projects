@@ -1,4 +1,4 @@
-3. By using Lambda function and boto3 with apporiate IAM role
+By using Lambda function and boto3 with appropriate IAM role
 
 Certainly! You can use AWS Lambda with Boto3, the AWS SDK for Python, to achieve similar functionality. Below is an example of a Lambda function written in Python using Boto3 to delete Elastic Load Balancers (ELBs) based on specified conditions.
 
