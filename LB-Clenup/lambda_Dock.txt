@@ -1,0 +1,47 @@
+3. By using Lambda function and boto3 with apporiate IAM role
+
+Certainly! You can use AWS Lambda with Boto3, the AWS SDK for Python, to achieve similar functionality. Below is an example of a Lambda function written in Python using Boto3 to delete Elastic Load Balancers (ELBs) based on specified conditions.
+
+AWS Lambda Python Script:
+
+##lb_cleanup_function.py
+
+
+
+AWS Lambda Execution Role Permissions:
+
+Make sure that the Lambda execution role has the necessary permissions. Here's an example policy with the required permissions:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DeleteLoadBalancer"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:DeleteELBFunction"
+        }
+    ]
+}
+
+
+Replace REGION and ACCOUNT_ID with the appropriate values.
+
+AWS Lambda Deployment:
+Create a Lambda function in the AWS Lambda console.
+Upload the deployment package (ZIP file) containing the Python script.
+Set the Lambda function handler to filename.lambda_handler (assuming the script is in a file named filename.py).
+Configure the Lambda function with an appropriate execution role that has the provided policy.
+AWS Lambda Trigger:
+You can trigger this Lambda function manually, schedule it with an Amazon CloudWatch Events rule, or set it as a target for another AWS service.
+
+Remember to adapt the script and permissions according to your specific requirements and security considerations.
