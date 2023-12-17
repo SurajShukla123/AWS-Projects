@@ -1,0 +1,35 @@
+Project 2: Load Balancer
+
+Removing Load Balancer, Which are not having Listener or unhealthy target group 
+
+There are different apporech that we can follow Remove LB.
+
+1. By using mgmt console 
+2. By using script and AWS CLI
+3. By using Lambda function and boto3 SDK with apporiate IAM role
+
+1. By using mgmt console 
+
+Login to console,  go to the EC2 section,  and then that reigon,  and under EC2  select ELB,  and there you will get the name of LB,  select which one you want to delete or check everything before deleting like listener and target grp etc and once everything you checked delete that.
+
+2.  By using script and AWS CLI
+
+Certainly, you can enhance the script to check for both conditions — whether the Elastic Load Balancer (ELB) has listeners and whether the associated target group is healthy. Below is an example using the AWS CLI for multiple regions. This script will iterate through each region, check each ELB for the specified conditions, and delete the ELBs that meet the criteria.
+
+AWS CLI Script (Checking Listeners and Target Group Health):
+
+Code is under script.sh fromet
+###scriptlb.sh
+
+
+Explanation:
+Explanation:
+
+The describe-load-balancers command uses a JMESPath query to filter ELBs that meet the specified conditions:
+
+not Listeners: ELBs without any listeners.
+ListenerDescriptions == null: ELBs without listener descriptions.
+TargetGroups[?HealthCheckPort].TargetGroups[?TargetHealthDescriptions[?TargetHealth.State != 'healthy']].TargetGroupArn: ELBs with associated target groups where the health check indicates unhealthy targets.
+If an ELB meets any of these conditions, it is included in the list to be deleted.
+
+Please note that you should thoroughly test any script before running it in a production environment, especially when dealing with resource deletion. Always consider the implications of deleting resources and ensure that the script aligns with your specific requirements and deployment practices.
