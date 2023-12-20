@@ -1,8 +1,8 @@
 Project 3: EBS-Snapshots Cleanup
 
-Removing EBS Snapshots , Which are older than 30 days
+Removing EBS Snapshots, Which are older than 30 days
 
-1.  By using Lambda function and boto3 SDK with apporiate IAM role
+1.  By using Lambda function and boto3 SDK with appropriate IAM role
 
 Step 1: Write Lambda Function (Python)
 
